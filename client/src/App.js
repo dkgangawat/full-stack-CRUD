@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Table from "./components/Table";
+import Table from "./components/Table.js";
 import HandleDelete from "./components/Temp";
 import CreateUserForm from "./components/form";
 
@@ -21,9 +21,9 @@ function App() {
             <CreateUserForm />
             <Table />
             <HandleDelete />
-          </div>
-        </main>
-      </div>
+          </div>{" "}
+        </main>{" "}
+      </div>{" "}
     </>
   );
 }
