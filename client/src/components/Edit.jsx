@@ -1,7 +1,12 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const Edit = () => {
-  return <></>;
+  const Navigator = useNavigate();
+  return (
+    <>
+      <div></div>
+    </>
+  );
 };
 
 export default Edit;
