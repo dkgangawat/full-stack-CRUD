@@ -19,7 +19,7 @@ export default function HandleDelete({ id }) {
 
   return (
     <>
-      <button onClick={handleDeleteClick}>Delete</button>
+      <button onClick={handleDeleteClick}> Delete </button>{" "}
     </>
   );
 }

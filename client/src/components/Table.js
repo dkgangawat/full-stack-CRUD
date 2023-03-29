@@ -54,8 +54,8 @@ function Table() {
 
   return (
     <>
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-100">
+      <table className="min-w-full divide-y divide-gray-200 ">
+        <thead className="bg-gray-100 hidden sm:table-auto">
           <tr>
             <th className="px-4 py-2">
               <input
@@ -82,8 +82,11 @@ function Table() {
         <tbody>
           {" "}
           {data.map((item, index) => (
-            <tr key={index}>
-              <td className="border py-2 px-2 text-center">
+            <tr
+              key={index}
+              className="  flex flex-wrap mb-4  px-4 mt-2 sm:table-auto "
+            >
+              <td className="border py-2 px-2 text-right sm:text-center w-full  ">
                 <input
                   type="checkbox"
                   className="form-checkbox h-5 w-5 text-indigo-600"
@@ -91,15 +94,27 @@ function Table() {
                   onChange={() => handleSelect(item._id)}
                 />{" "}
               </td>{" "}
-              <td className="border py-2 px-2 text-center"> {index + 1} </td>{" "}
-              <td className="border py-2 px-2 text-center"> {item.name} </td>{" "}
-              <td className="border py-2 px-2 text-center">
+              <td className="border py-2 px-2 text-right sm:text-center w-full before:content-['s.no'] before:absolute before:left-6 before:font-bold  before:-z-10 sm:before:content-[] ">
+                {" "}
+                {index + 1}{" "}
+              </td>{" "}
+              <td className="border py-2 px-2 text-right sm:text-center w-full before:content-['name'] before:absolute before:left-6 before:font-bold before:-z-10 sm:before:content-[]">
+                {" "}
+                {item.name}{" "}
+              </td>{" "}
+              <td className="border py-2 px-2 text-right sm:text-center w-full before:content-['phoneNumber'] before:absolute before:left-6 before:font-bold before:-z-10 sm:before:content-[]">
                 {" "}
                 {item.phoneNumber}{" "}
               </td>{" "}
-              <td className="border py-2 px-2 text-center"> {item.email} </td>{" "}
-              <td className="border py-2 px-2 text-center"> {item.hobbies} </td>{" "}
-              <td className="border py-2 px-2 text-center">
+              <td className="border py-2 px-2 text-right sm:text-center w-full before:content-['email'] before:absolute before:left-6 before:font-bold before:-z-10 sm:before:content-[]">
+                {" "}
+                {item.email}{" "}
+              </td>{" "}
+              <td className="border py-2 px-2 text-right sm:text-center w-full before:content-['hobbies'] before:absolute before:left-6 before:font-bold before:-z-10 sm:before:content-[]">
+                {" "}
+                {item.hobbies}{" "}
+              </td>{" "}
+              <td className="border py-2 px-2 text-right sm:text-center w-full before:content-['Action'] before:absolute before:left-6 before:font-bold before:-z-10 sm:before:content-[]">
                 <button
                   className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
                   onClick={() => handleEdit(item._id)}
