@@ -7,7 +7,12 @@ export function sendEmail(dataArray) {
   };
 
   emailjs
-    .send("service_jojbayt", "template_o4t86do", data, "sGkbUihqwexCq2uxc")
+    .send(
+      process.env.REACT_APP_EMAILJS_SERVICE_ID,
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+      data,
+      process.env.REACT_APP_EMAILJS_USER_ID
+    )
     .then(
       (result) => {
         alert("mail sent");
