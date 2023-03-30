@@ -1,6 +1,7 @@
 import React from "react";
 import CreateUserForm from "./form";
 import Table from "./Table";
+import ButtonGroup from "./ButtonGroup";
 const Home = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const Home = () => {
         </header>
         <main>
           <div className="mx-auto max-w-full py-6 sm:px-12 lg:px-12">
+            <ButtonGroup />
             <CreateUserForm />
             <Table />
           </div>

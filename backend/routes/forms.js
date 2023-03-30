@@ -31,7 +31,14 @@ router.delete(`/data/items/:id`, async (req, res) => {
     res.send({ message: "deleted successfully" });
   });
 });
-router.post("/data/update/:id", async (req, res) => {
-  console.log(req);
+router.put("/data/update/:id", async (req, res) => {
+  const userId = req.params.id;
+  const updatedUserData = req.body;
+  try {
+    await User.findOneAndUpdate({ _id: userId }, updatedUserData);
+    res.send("updated");
+  } catch (error) {
+    res.send(error);
+  }
 });
 module.exports = router;

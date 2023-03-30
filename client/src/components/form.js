@@ -1,47 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+import { UserContext } from "../context/user";
 
 function CreateUserForm() {
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [state, setState] = useContext(UserContext);
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [hobbies, setHobbies] = useState("");
 
-  const handleOpenForm = () => {
-    setIsFormOpen(true);
-  };
-
-  const handleCloseForm = () => {
-    setIsFormOpen(false);
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const res = await axios.post("/create", {
+      event.target.disabled = true;
+      await axios.post("/create", {
         name,
         phoneNumber,
         email,
         hobbies,
       });
+      state.fetchData();
+      event.target.disabled = false;
     } catch (err) {
       console.log(err);
+      event.target.disabled = false;
     }
-    setIsFormOpen(false);
+    setState({ ...state, formPopUp: false });
   };
 
   return (
     <>
-      <div className="flex justify-end mt-4 mb-2">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={handleOpenForm}
-        >
-          Create User
-        </button>
-      </div>
-      {isFormOpen && (
+      {state.formPopUp && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-75 flex align-middle">
           <div className="m-auto sm:w-1/2 w-3/4  bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold mb-4"> Create User </h2>
@@ -118,7 +107,7 @@ function CreateUserForm() {
                 </button>
                 <button
                   className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
-                  onClick={handleCloseForm}
+                  onClick={() => setState({ ...state, formPopUp: false })}
                   type="button"
                 >
                   Cancel
